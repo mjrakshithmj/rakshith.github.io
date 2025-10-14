@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Font Awesome CDN for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Britannia Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: red;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+  header nav {
+    display: flex;
+    gap: 20px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  header nav a {
+    color: #111;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: color 0.2s ease;
+  }
+  header nav a:hover { color: #d62027; }
+  .logo { height: 62px; }
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .btn-shop {
+    background-color: #d62027;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .btn-shop:hover { background-color: #a7171d; }
+
+  /* Wave divider */
+  .wave-divider { width: 100%; overflow: hidden; line-height: 20; }
+  .wave-divider svg { display: block; width: 100%; height: 150px; }
+
+  /* Middle section */
+  .form-section {
+    background: #fdf3ca;
+    background-repeat: repeat;
+    background-size: 120px;
+    padding: 5px 20px 100px;
+    text-align: center;
+  }
+  .form-section .product-img {
+    max-width: 140px;
+    margin: 0 auto 10px;
+  }
+  .form-section h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #d62027;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .form-card {
+    background: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 35px 30px 45px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
+    text-align: left;
+  }
+
+  /* Flexbox grid for form layout */
+  .form-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .personal-info,
+  .contact-info {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  input[type="date"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 24px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus {
+    border-color: #d62027;
+    outline: none;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #d62027;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #a7171d;
+  }
+
+  /* Center the button */
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  /* Footer */
+  .footer-bottom {
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+  }
+  .footer-bottom a:hover {
+    color: #ffd600;
+  }
+  .footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .footer-right {
+    gap: 15px;
+  }
+  footer {
+    background: #ffd600;
+    padding: 40px 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 1px;
+  }
+  footer .social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  footer .social-icons a {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    background-color: #d62027;
+    color: white;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 38px;
+    text-align: center;
+    text-decoration: none;
+  }
+  footer .social-icons a:hover { background-color: #a7171d; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    header { padding: 10px 15px; flex-wrap: wrap; justify-content: center; }
+    header nav { gap: 12px; font-size: 12px; flex-wrap: wrap; justify-content: center; width: 100%; margin-bottom: 12px; }
+    .form-section { padding: 40px 15px 80px; }
+    .form-section h2 { font-size: 2rem; }
+    .form-card { padding: 25px 20px 35px; }
+    .form-grid {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  
+</style>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="https://www.britannia.co.in/about-us">ABOUT</a>
+    <a href="#">PRODUCTS</a>
+    <a href="https://www.britannia.co.in/impact">IMPACT</a>
+    <a href="https://www.britannia.co.in/investors/financial-performance/financial-results">INVESTOR RELATIONS</a>
+  </nav>
+
+  <img class="logo" src="https://www.britannia.co.in/_next/image?url=https%3A%2F%2Fmedia.britannia.co.in%2FBritannia_Logo_fcce3225c0.png&w=2048&q=100" />
+
+  <nav>
+    <a href="https://www.britannia.co.in/wisebite">WISEBITE</a>
+    <a href="https://www.britannia.co.in/careers">CAREERS</a>
+    <a href="https://www.britannia.co.in/news-and-media">NEWS & MEDIA</a>
+    <a href="https://www.britannia.co.in/contact">CONTACT</a>
+  </nav>
+
+  <div class="header-right">
+  <a href="https://www.britannia.co.in/#" class="btn-shop-link">
+    <button class="btn-shop">SHOP NOW</button>
+  </a>
+</div>
+</header>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path fill="#fdf3ca" d="M0,64 C360,128 1080,0 1440,64 L1440,120 L0,120 Z"></path>
+  </svg>
+</div>
+
+<section class="form-section">
+  <h2>LET’S GET TO KNOW YOU!</h2>
+
+  <form class="form-card" action="#" method="POST" novalidate>
+    <div class="form-grid">
+      <!-- Personal Information (Left Side) -->
+      <div class="personal-info">
+        <h3>Personal Information</h3>
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
+      </div>
+
+      <!-- Contact Information (Right Side) -->
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Your mobile number" required />
+
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" placeholder="Your state" required />
+
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="Your city" required />
+      </div>
+    </div>
+
+    <!-- Button Wrapper -->
+    <div class="button-wrapper">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</section>
+
+<footer>
+  <p>Contact us: <strong>1-800-4254449</strong> | 
+    <a href="mailto:feedback@britindia.com" style="color:#000; text-decoration: underline;">feedback@britindia.com</a>
+  </p>
+  <p>Connect with us:</p>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/company/britannia-industries-limited/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.facebook.com/BritanniaIndustriesLimited/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://x.com/britanniaindltd" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/britanniasnackinc/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com/channel/UC1Qp6V_rPNEqTsD9oc-5szQ" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</footer>
+
+
+<!-- Black footer bottom bar -->
+<div class="footer-bottom">
+  <div class="footer-left">
+    © Copyright 2024 Britannia Industries, All rights reserved.
+  </div>
+  <div class="footer-right">
+    <a href="https://www.britannia.co.in/disclaimer">Disclaimers</a>
+    <a href="https://www.britannia.co.in/privacy-policy">Privacy Policy</a>
+    <a href="https://www.britannia.co.in/privacy-policy">Cookie Policy</a>
+  </div>
+</div>
+
+</body>
+</html>
