@@ -1,942 +1,683 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Americana at Brand</title>
+    <title>Scoop N Loop | Artisan Gelato & Sweet Creations</title>
+    <!-- Link to Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ====== 1. GLOBAL STYLES & RESET ====== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #333;
             line-height: 1.6;
-            background-color: #fff;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px 20px;
-            font-size: 14px;
-        }
-
-        .top-bar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        .top-bar a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header */
-        header {
-            background-color: #fff;
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo-container {
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        .logo-container img {
-            max-width: 130px;
-            height: auto;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: #f8f8f8;
-            border-top: 1px solid #e0e0e0;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0;
-        }
-
-        nav ul li a {
-            display: block;
-            padding: 15px 20px;
             color: #333;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.3s;
+            background-color: #fffdfa; /* Warm off-white */
+            overflow-x: hidden;
         }
-
-        nav ul li a:hover {
-            background-color: #e8e8e8;
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        /* Hours Info */
-        .hours-info {
-            background-color: #f0f0f0;
-            padding: 15px 20px;
+        .section-title {
             text-align: center;
-            font-size: 14px;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #4a2c6d; /* Brand purple */
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff9a8d; /* Brand coral */
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #ff9a8d, #4a2c6d);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 44, 109, 0.3);
+            text-align: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 44, 109, 0.4);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
         }
 
-        .hours-info p {
-            margin: 5px 0;
+        /* ====== 2. HEADER & NAVIGATION ====== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 253, 250, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #4a2c6d;
+        }
+        .logo span {
+            color: #ff9a8d;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            font-weight: 600;
+            color: #555;
+            transition: color 0.3s;
+            font-size: 1.05rem;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff9a8d;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #4a2c6d;
         }
 
-        /* Hero Section */
+        /* ====== 3. HERO SECTION ====== */
         .hero {
-            background: white url('https://via.placeholder.com/1920x600/8B7355/ffffff?text=Welcome+to+The+Americana') center/cover;
-            color: black;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+            /* REPLACE THIS BACKGROUND IMAGE URL */
+            url('https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200') center/cover no-repeat;
+            color: white;
             text-align: center;
-            padding: 20px 20px;
+            padding-top: 80px;
         }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .hero p {
-            font-size: 18px;
+        .hero-content {
             max-width: 800px;
-            margin: 0 auto 30px;
-            line-height: 1.8;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
         }
 
-        /* Featured Sections */
-        .featured {
-            padding: 0px 20px;
+        /* ====== 4. STORY SECTION ====== */
+        .story {
+            padding: 100px 0;
             background-color: #fff;
         }
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .story-text h3 {
+            font-size: 1.8rem;
+            color: #4a2c6d;
+            margin-bottom: 1.5rem;
+        }
+        .story-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        .story-image img {
+            box-shadow: 15px 15px 0px #ff9a8d;
+        }
 
-        .featured-grid {
+        /* ====== 5. PRODUCTS SHOWCASE ====== */
+        .products {
+            padding: 100px 0;
+            background-color: #f9f5ff;
+        }
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
-
-        .featured-card {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border: 1px solid #e0e0e0;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .featured-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #8B7355;
-        }
-
-        .featured-card p {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .featured-card .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: #8B7355;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
-            transition: background-color 0.3s;
-        }
-
-        .featured-card .btn:hover {
-            background-color: #6d5a43;
-        }
-
-        /* Welcome Section */
-        .welcome {
-            padding: 80px 20px;
-            background-color: #f8f8f8;
-            text-align: center;
-        }
-
-        .welcome h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-            font-weight: 300;
-            color: #333;
-        }
-
-        .welcome p {
-            font-size: 16px;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Subscription Section */
-        .subscription {
-            background-color: #8B7355;
-            color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .subscription h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .subscription-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .subscription-form input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            font-size: 14px;
-            border-radius: 3px;
-        }
-
-        .subscription-form input:focus {
-            outline: 2px solid #6d5a43;
-        }
-
-        .subscription-form button {
-            padding: 15px 40px;
-            background-color: #000;
-            color: #fff;
-            border: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border-radius: 3px;
-        }
-
-        .subscription-form button:hover {
-            background-color: #333;
-        }
-
-        /* Honeypot fields - hidden from real users but visible to bots */
-        .hp-field {
-            position: absolute;
-            left: -9999px;
-            opacity: 0;
-            height: 0;
-            width: 0;
-        }
-
-        /* Security Test Panel */
-        .security-test {
-            background: #f8f8f8;
-            padding: 20px;
-            margin: 30px auto;
-            max-width: 800px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-
-        .security-test h3 {
-            color: #8B7355;
-            margin-bottom: 15px;
-        }
-
-        .test-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 15px 0;
-        }
-
-        .test-btn {
-            padding: 8px 16px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s;
-        }
-
-        .test-btn:hover {
-            background: #555;
-        }
-
-        .test-results {
+        .product-card {
             background: white;
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            font-family: monospace;
-            border: 1px solid #ddd;
-            max-height: 200px;
-            overflow-y: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease;
         }
-
-        .result-pass {
-            color: #2e7d32;
+        .product-card:hover {
+            transform: translateY(-10px);
         }
-
-        .result-fail {
-            color: #c62828;
+        .product-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
         }
-
-        .result-info {
-            color: #1565c0;
+        .product-info {
+            padding: 25px;
         }
-
-        /* Footer */
-        footer {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 60px 20px 30px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #8B7355;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 2;
-        }
-
-        .footer-section a:hover {
-            color: #fff;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
+        .product-info h4 {
+            font-size: 1.5rem;
+            color: #4a2c6d;
             margin-bottom: 10px;
         }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
+        .product-info p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff9a8d;
         }
 
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: #333;
+        /* ====== 6. INSTAGRAM FEED SECTION ====== */
+        .instagram-feed {
+            padding: 100px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+        .feed-description {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        /* INSTRUCTIONS BOX FOR EMBED */
+        .embed-instructions {
+            background: #f0f8ff;
+            border-left: 5px solid #4a2c6d;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: left;
+            border-radius: 8px;
+        }
+        .embed-instructions h4 {
+            color: #4a2c6d;
+            margin-bottom: 15px;
+        }
+        .embed-instructions ol {
+            margin-left: 20px;
+            color: #555;
+        }
+        .embed-instructions li {
+            margin-bottom: 10px;
+        }
+        .embed-instructions code {
+            background: #e9ecef;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        /* Placeholder for actual Instagram embed */
+        .instagram-embed-placeholder {
+            background: linear-gradient(45deg, #f7c8d7, #a9c9ff);
+            border-radius: 15px;
+            padding: 60px 20px;
+            color: #4a2c6d;
+            margin-top: 30px;
+        }
+
+        /* ====== 7. LOCATION & CONTACT ====== */
+        .contact {
+            padding: 100px 0;
+            background-color: #f9f5ff;
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        .contact-info h3,
+        .hours h3 {
+            color: #4a2c6d;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        .contact-detail,
+        .hours-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .contact-detail i,
+        .hours-list i {
+            color: #ff9a8d;
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+        .hours-list {
+            list-style: none;
+        }
+        .map-placeholder {
+            background: #ddd;
+            border-radius: 15px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.3s;
+            color: #666;
+            font-weight: bold;
+            border: 2px dashed #aaa;
         }
 
-        .social-links a:hover {
-            background-color: #8B7355;
+        /* ====== 8. FOOTER ====== */
+        footer {
+            background: #4a2c6d;
+            color: white;
+            padding: 70px 0 30px;
         }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 30px;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+        .social-icons a {
+            display: inline-block;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
             text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
         }
-
-        .footer-bottom p {
-            color: #999;
-            font-size: 13px;
-            margin-bottom: 15px;
+        .social-icons a:hover {
+            background: #ff9a8d;
+            transform: translateY(-3px);
         }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 15px;
+        .footer-links h4,
+        .newsletter h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
         }
-
+        .footer-links h4::after,
+        .newsletter h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 40px;
+            height: 3px;
+            background: #ff9a8d;
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
         .footer-links a {
-            color: #999;
-            text-decoration: none;
-            font-size: 12px;
+            color: #ddd;
+            transition: color 0.3s;
         }
-
         .footer-links a:hover {
-            color: #fff;
+            color: #ff9a8d;
+            padding-left: 5px;
+        }
+        .newsletter p {
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+        .newsletter-form {
+            display: flex;
+        }
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+        .newsletter-form button {
+            background: #ff9a8d;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .newsletter-form button:hover {
+            background: #ff7a6d;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+            font-size: 0.95rem;
         }
 
-        /* Responsive */
+        /* ====== 9. RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.8rem; }
+            .story-grid { grid-template-columns: 1fr; }
+            .story-image { order: -1; }
+        }
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            nav ul {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
                 flex-direction: column;
-                align-items: center;
+                background: white;
+                text-align: center;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                transition: 0.3s;
             }
-
-            .form-row {
-                flex-direction: column;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+            .nav-links.active { left: 0; }
+            .nav-links li { margin: 15px 0; }
+            .hero h1 { font-size: 2.3rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <a href="#hours">Today's Hours | 10am-9pm</a>
-        <a href="#signature">Caruso Signature</a>
-    </div>
-
-    <!-- Header -->
+    <!-- ====== HEADER & NAVIGATION ====== -->
     <header>
-        <div class="logo-container">
-            <img src="https://americanaatbrand.com/wp-content/uploads/2021/11/Americana-Logo-Vector.svg" alt="The Americana at Brand" id="logo">
-            <h1 style="display: none;">The Americana at Brand</h1>
-        </div>
-
-        <!-- Navigation -->
-        <nav>
-            <ul>
-                <li><a href="#shopping">Shopping</a></li>
-                <li><a href="#dining">Dining</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#offers">Offers</a></li>
-                <li><a href="#visit">Visit</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#edit">The Edit</a></li>
-                <li><a href="#residences">Residences</a></li>
+        <div class="container navbar">
+            <a href="#" class="logo">Scoop <span>N</span> Loop</a>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#products">Menu</a></li>
+                <li><a href="#instagram">Instagram</a></li>
+                <li><a href="#contact">Visit Us</a></li>
+                <li><a href="#contact" class="btn-primary" style="padding: 10px 20px;">Order Now</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hours Information -->
-    <div class="hours-info">
-        <p><strong>Hours:</strong></p>
-        <p>Mon - Thu: 10am-9pm | Fri - Sat: 10am-10pm | Sun: 11am-8pm</p>
-    </div>
-
-    <!-- Hero Section -->
+    <!-- ====== 1. HERO SECTION ====== -->
     <section class="hero">
-        <h1>Welcome to The Americana at Brand</h1>
-        <p>The Americana at Brand in Glendale, California, is a one-of-a-kind destination that offers a remarkable blend of shopping, restaurants, activities, movies, and entertainment. Located just a short drive away from Downtown Los Angeles and Hollywood, The Americana at Brand enjoys a unique and advantageous location.</p>
+        <div class="container hero-content">
+            <h1>Experience the Art of Gelato</h1>
+            <p>Where every scoop is a masterpiece and every loop is pure joy. Handcrafted daily with the finest ingredients for an unforgettable taste sensation.</p>
+            <a href="#products" class="btn-primary">Explore Our Flavors</a>
+        </div>
     </section>
 
-    <!-- Featured Sections -->
-    <section class="featured">
-        <div class="featured-grid">
-            <div class="featured-card">
-                <h3>Enjoy Dine LA</h3>
-                <p>Make reservations at Bacari GDL, Seabutter and more to enjoy specially priced prix-fixe menus for lunch and dinner.</p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-
-            <div class="featured-card">
-                <h3>Michelina Bakery</h3>
-                <p>Say bonjour to the bakery where artisanal breads and homemade desserts come to life in a Parisian-inspired patisserie.</p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-
-            <div class="featured-card">
-                <h3>Kids Club</h3>
-                <p>Join us for a weekly dose of fun with live music, puppet shows, magic and more at Kids Club in Collaboration with Apple TV.</p>
-                <a href="#" class="btn">Learn More</a>
+    <!-- ====== 2. BRAND STORY SECTION ====== -->
+    <section id="story" class="story">
+        <div class="container">
+            <h2 class="section-title">Our Sweet Story</h2>
+            <div class="story-grid">
+                <div class="story-text">
+                    <h3>More Than Just Ice Cream</h3>
+                    <p>Scoop N Loop was born from a simple dream: to create moments of pure, unadulterated happiness. We believe that the perfect gelato is a blend of science, art, and love.</p>
+                    <p>Our name tells our philosophy: the "Scoop" represents our commitment to classic, creamy perfection. The "Loop" is our playful twist—unexpected flavors, swirling toppings, and the fun circle of sharing joy with our community.</p>
+                    <p>From sourcing seasonal fruits to perfecting our slow-churn process, every step is done with care to deliver an experience that's both nostalgic and excitingly new.</p>
+                    <a href="#contact" class="btn-primary">Come Taste the Difference</a>
+                </div>
+                <div class="story-image">
+                    <!-- REPLACE THIS IMAGE -->
+                    <img src="https://images.unsplash.com/photo-1516559828984-fb3b99548b21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800" alt="Artisan making gelato at Scoop N Loop">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Welcome Text Section -->
-    <section class="welcome">
-        <h2>Discover The Americana at Brand</h2>
-        <p>Situated in close proximity to iconic destinations, The Americana at Brand serves as a convenient center for both locals and tourists alike. Experience world-class shopping, exceptional dining, and unforgettable entertainment in the heart of Glendale.</p>
-    </section>
-
-    <!-- More Features -->
-    <section class="featured">
-        <div class="featured-grid">
-            <div class="featured-card">
-                <h3>Caruso Signature</h3>
-                <p>A premier membership to the world of Caruso. Enhanced events, early access and exclusive rewards await you.</p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-
-            <div class="featured-card">
-                <h3>Movies</h3>
-                <p>Head to the big screen for an unforgettable moviegoing experience by AMC Theatres. Enjoy the latest in must-see films alongside AMC Perfectly Popcorn™.</p>
-                <a href="#" class="btn">Learn More</a>
-            </div>
-
-            <div class="featured-card">
-                <h3>Piano Bar</h3>
-                <p>Experience live entertainment at Bourbon Steak Los Angeles with Piano Bar performances every evening from 7pm-10pm.</p>
-                <a href="#" class="btn">Learn More</a>
+    <!-- ====== 3. PRODUCTS SHOWCASE ====== -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Signature Creations</h2>
+            <div class="product-grid">
+                <!-- PRODUCT 1 -->
+                <div class="product-card">
+                    <!-- REPLACE THIS IMAGE -->
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Salted Caramel Swirl Gelato" class="product-img">
+                    <div class="product-info">
+                        <h4>Salted Caramel Swirl</h4>
+                        <p>Rich caramel gelato with a hint of sea salt and dark chocolate ribbons.</p>
+                        <div class="price">$6.50</div>
+                    </div>
+                </div>
+                <!-- PRODUCT 2 -->
+                <div class="product-card">
+                    <!-- REPLACE THIS IMAGE -->
+                    <img src="https://images.unsplash.com/photo-15170997721d-7d1f6c610661?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Berry Loop Sorbet" class="product-img">
+                    <div class="product-info">
+                        <h4>Berry Loop Sorbet</h4>
+                        <p>A vibrant, dairy-free swirl of strawberry, raspberry, and blueberry.</p>
+                        <div class="price">$5.75</div>
+                    </div>
+                </div>
+                <!-- PRODUCT 3 -->
+                <div class="product-card">
+                    <!-- REPLACE THIS IMAGE -->
+                    <img src="https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600" alt="Hazelnut Dream" class="product-img">
+                    <div class="product-info">
+                        <h4>Hazelnut Dream</h4>
+                        <p>Creamy Piedmont hazelnut gelato with crushed pralines and a cocoa dusting.</p>
+                        <div class="price">$7.00</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Security Test Section -->
-    <section class="security-test">
-        <h3>Security Test Tool</h3>
-        <p>Test the anti-spam protection system:</p>
-        <div class="test-buttons">
-            <button class="test-btn" onclick="testHoneypot()">Test Honeypot</button>
-            <button class="test-btn" onclick="testTimeVerification()">Test Time-Based Check</button>
-            <button class="test-btn" onclick="testRealUser()">Test Real User Submission</button>
-            <button class="test-btn" onclick="testBotSimulation()">Simulate Bot Attack</button>
-        </div>
-        <div id="testResults" class="test-results"></div>
+    <!-- ====== 4. INSTAGRAM FEED SECTION ====== -->
+    <section id="instagram" class="instagram-feed">
+        <div class="container">
+            <h2 class="section-title">Follow the Loop</h2>
+            <p class="feed-description">Join our sweet community! Follow <strong>@scoop_n_loop</strong> on Instagram for daily delights, secret flavors, and to see your photos featured here.</p>
     </section>
 
-    <!-- Subscription Section with Security Features -->
-    <section class="subscription">
-        <h2>Get the Latest News and Offers</h2>
-        <form method="POST" class="subscription-form" id="subscriptionForm" onsubmit="return handleSubmit(event)">
-            <!-- Hidden timestamp - records when form was loaded -->
-            <input type="hidden" id="formLoadTime" name="formLoadTime">
-            
-            <!-- Honeypot Field 1 - Hidden from real users but visible to bots -->
-            <input type="text" class="hp-field" id="botCheck" name="botCheck" placeholder="Leave this field empty">
-            
-            <!-- Honeypot Field 2 - Another trap field -->
-            <input type="email" class="hp-field" id="website" name="website" placeholder="Your website">
-            
-            <!-- Honeypot Field 3 - Phone number trap -->
-            <input type="tel" class="hp-field" id="phone" name="phone" placeholder="Your phone number">
-            
-            <!-- Real fields visible to users -->
-            <div class="form-row">
-                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
-                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+    <!-- ====== 5. LOCATION & CONTACT ====== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Our Shop</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address</strong><br>
+                            <!-- REPLACE ADDRESS -->
+                            123 Sweet Avenue, Gelato District<br>
+                            San Francisco, CA 94107
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (415) 555-0123
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            hello@scoopnloop.com
+                        </div>
+                    </div>
+                    <a href="https://www.google.com/maps/place/Kunduvada+Lake/@14.4557555,75.8848294,16z/data=!4m6!3m5!1s0x3bba2f8498d158f1:0xc15382c6cd9c8644!8m2!3d14.4550295!4d75.8926071!16s%2Fg%2F11cn3w6b06?entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" class="btn-primary" style="margin-top: 20px;">
+                        <i class="fas fa-directions"></i> Get Directions
+                    </a>
+                </div>
+
+                <div class="hours">
+                    <h3>Hours of Operation</h3>
+                    <ul class="hours-list">
+                        <li><i class="far fa-clock"></i> <strong>Monday - Thursday:</strong> 12:00 PM - 10:00 PM</li>
+                        <li><i class="far fa-clock"></i> <strong>Friday - Saturday:</strong> 11:00 AM - 11:00 PM</li>
+                        <li><i class="far fa-clock"></i> <strong>Sunday:</strong> 11:00 AM - 9:00 PM</li>
+                    </ul>
+                    <p style="color: #666; margin-top: 25px;"><em>Extended summer hours may apply. Follow us on Instagram for real-time updates!</em></p>
+                </div>
+
+                <div class="map">
+                    <h3>Find Us</h3>
+                    <!-- REPLACE WITH GOOGLE MAPS EMBED CODE -->
+                    <div style="width:100%;max-width:800px;margin:auto;">
+  <iframe
+    src="https://www.google.com/maps?q=Kunduvada+Lake+Davanagere&output=embed"
+    width="100%"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+                </div>
             </div>
-            <input type="email" id="email" name="email" placeholder="Email" required>
-            <button type="submit" id="submitBtn">Subscribe</button>
-        </form>
-        <p id="formMessage" style="margin-top: 15px; display: none;"></p>
+        </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ====== 6. FOOTER ====== -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>The Americana at Brand</h3>
-                <p>889 Americana Way<br>Glendale, CA 91210</p>
-                <p>818.637.8982</p>
-                <p><a href="#contact">Contact Us</a></p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook">f</a>
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                    <a href="#" aria-label="Instagram">📷</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Scoop <span>N</span> Loop</div>
+                    <p>Crafting moments of joy, one scoop at a time. We are dedicated to the art of Italian gelato and the happiness it brings to our community.</p>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/scoop_n_loop" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#story">Our Story</a></li>
+                        <li><a href="#products">Full Menu</a></li>
+                        <li><a href="#contact">Catering</a></li>
+                        <li><a href="#contact">Jobs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="newsletter">
+                    <h4>Stay in the Loop</h4>
+                    <p>Subscribe for exclusive flavor launches, events, and sweet discounts.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
+                        <button type="submit">Join</button>
+                    </form>
+                    <p style="font-size:0.9rem; margin-top:15px;">We respect your inbox. No spam, just sweetness.</p>
                 </div>
             </div>
 
-            <div class="footer-section">
-                <h3>Opportunity</h3>
-                <ul>
-                    <li><a href="#partnerships">Brand Partnerships</a></li>
-                    <li><a href="#leasing">Specialty Retail Leasing</a></li>
-                    <li><a href="#filming">Filming</a></li>
-                    <li><a href="#careers">Careers</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#shopping">Shopping</a></li>
-                    <li><a href="#dining">Dining</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#services">Services</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Visit</h3>
-                <ul>
-                    <li><a href="#directory">Directory</a></li>
-                    <li><a href="#parking">Parking</a></li>
-                    <li><a href="#hours">Visit Us</a></li>
-                    <li><a href="#highlights">Highlights</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Caruso | All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#faq">FAQ</a>
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#accessibility">Accessibility Certification</a>
-                <a href="#sitemap">HTML Sitemap</a>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear"></span> Scoop N Loop. All rights reserved. | Crafted with ❤️ and 🍨</p>
             </div>
         </div>
     </footer>
 
+    <!-- ====== JAVASCRIPT FOR INTERACTIVITY ====== -->
     <script>
-        // Initialize form timestamp when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('formLoadTime').value = Date.now();
+        // Mobile Navigation Toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
         });
 
-        // Form submission handler with security checks
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const formData = new FormData(form);
-            const submitTime = Date.now();
-            const loadTime = parseInt(formData.get('formLoadTime'));
-            const timeDiff = submitTime - loadTime;
-            
-            // Check 1: Honeypot validation
-            const honeypotFields = ['botCheck', 'website', 'phone'];
-            let honeypotDetected = false;
-            
-            honeypotFields.forEach(field => {
-                if (formData.get(field)) {
-                    honeypotDetected = true;
-                    console.log(`Honeypot detected: ${field} = "${formData.get(field)}"`);
-                }
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+                document.getElementById('mobileToggle').querySelector('i').classList.add('fa-bars');
+                document.getElementById('mobileToggle').querySelector('i').classList.remove('fa-times');
             });
-            
-            // Check 2: Time-based validation (submitted too fast = likely bot)
-            const tooFast = timeDiff < 3000; // Less than 3 seconds
-            
-            // Show security check results
-            const messageElement = document.getElementById('formMessage');
-            
-            if (honeypotDetected) {
-                // Honeypot was filled - definitely a bot
-                messageElement.textContent = 'Security check failed. Please try again.';
-                messageElement.style.color = '#c62828';
-                messageElement.style.display = 'block';
-                console.log('❌ Bot detected: Honeypot field was filled');
-                return false;
-            }
-            
-            if (tooFast) {
-                // Submitted too quickly - likely a bot
-                messageElement.textContent = 'Please take a moment to fill out the form properly.';
-                messageElement.style.color = '#f57c00';
-                messageElement.style.display = 'block';
-                console.log(`⚠️ Suspicious: Form submitted in ${timeDiff}ms (too fast)`);
-                return false;
-            }
-            
-            // Security checks passed - process form
-            const firstName = formData.get('firstName');
-            const lastName = formData.get('lastName');
-            const email = formData.get('email');
-            
-            console.log('✅ Form submitted successfully:');
-            console.log(`   Name: ${firstName} ${lastName}`);
-            console.log(`   Email: ${email}`);
-            console.log(`   Time to submit: ${timeDiff}ms`);
-            
-            // Show success message
-            messageElement.textContent = `Thank you ${firstName}! You have been subscribed.`;
-            messageElement.style.color = '#2e7d32';
-            messageElement.style.display = 'block';
-            
-            // Reset form
-            setTimeout(() => {
-                form.reset();
-                messageElement.style.display = 'none';
-                // Reset timestamp for next submission
-                document.getElementById('formLoadTime').value = Date.now();
-            }, 3000);
-          fetch("https://login.salesforce.com/api/submit", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        firstName,
-        lastName,
-        email
-    })
-})
-.then(() => {
-    console.log("Data sent to backend");
-})
-.catch(err => {
-    console.error("Backend error", err);
-});
+        });
 
-return false;
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-        }
-        
-        // Security Testing Functions
-        function logTestResult(message, type = 'info') {
-            const resultsDiv = document.getElementById('testResults');
-            const timestamp = new Date().toLocaleTimeString();
-            let className = 'result-info';
-            
-            if (type === 'pass') className = 'result-pass';
-            if (type === 'fail') className = 'result-fail';
-            
-            resultsDiv.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
-            resultsDiv.scrollTop = resultsDiv.scrollHeight;
-        }
-        
-        function testHoneypot() {
-            logTestResult('=== Testing Honeypot Fields ===', 'info');
-            
-            // Create a test form
-            const testForm = document.createElement('form');
-            testForm.innerHTML = `
-                <input type="text" name="botCheck" value="bot-filled-value">
-                <input type="email" name="website" value="">
-                <input type="tel" name="phone" value="">
-                <input type="hidden" name="formLoadTime" value="${Date.now()}">
-            `;
-            
-            const formData = new FormData(testForm);
-            
-            // Test honeypot detection
-            const honeypotFields = ['botCheck', 'website', 'phone'];
-            let detected = false;
-            
-            honeypotFields.forEach(field => {
-                if (formData.get(field)) {
-                    detected = true;
-                    logTestResult(`Honeypot "${field}" was filled with: "${formData.get(field)}"`, 'fail');
-                }
-            });
-            
-            if (detected) {
-                logTestResult('✅ Honeypot detection is working correctly', 'pass');
-            } else {
-                logTestResult('❌ Honeypot detection failed', 'fail');
-            }
-            
-            logTestResult('=== Honeypot Test Complete ===', 'info');
-        }
-        
-        function testTimeVerification() {
-            logTestResult('=== Testing Time-Based Verification ===', 'info');
-            
-            // Test 1: Fast submission (should be blocked)
-            const fastSubmitTime = Date.now();
-            const fastLoadTime = fastSubmitTime - 1000; // 1 second ago
-            logTestResult(`Test 1: Form submitted in 1 second`, 'info');
-            
-            if (fastSubmitTime - fastLoadTime < 3000) {
-                logTestResult('✅ Fast submission (1s) correctly identified as suspicious', 'pass');
-            } else {
-                logTestResult('❌ Fast submission check failed', 'fail');
-            }
-            
-            // Test 2: Normal submission (should pass)
-            const normalSubmitTime = Date.now();
-            const normalLoadTime = normalSubmitTime - 5000; // 5 seconds ago
-            logTestResult(`Test 2: Form submitted in 5 seconds`, 'info');
-            
-            if (normalSubmitTime - normalLoadTime >= 3000) {
-                logTestResult('✅ Normal submission (5s) correctly allowed', 'pass');
-            } else {
-                logTestResult('❌ Normal submission check failed', 'fail');
-            }
-            
-            // Test 3: Very fast submission (definitely bot)
-            const botSubmitTime = Date.now();
-            const botLoadTime = botSubmitTime - 500; // 0.5 seconds ago
-            logTestResult(`Test 3: Form submitted in 0.5 seconds (bot-like)`, 'info');
-            
-            if (botSubmitTime - botLoadTime < 3000) {
-                logTestResult('✅ Bot-like submission (0.5s) correctly blocked', 'pass');
-            } else {
-                logTestResult('❌ Bot detection failed', 'fail');
-            }
-            
-            logTestResult('=== Time Verification Test Complete ===', 'info');
-        }
-        
-        function testRealUser() {
-            logTestResult('=== Testing Real User Simulation ===', 'info');
-            
-            // Simulate a real user filling out the form
-            logTestResult('Simulating a real user...', 'info');
-            
-            // Fill form fields (simulating user input)
-            document.getElementById('firstName').value = 'John';
-            document.getElementById('lastName').value = 'Doe';
-            document.getElementById('email').value = 'john@example.com';
-            
-            // Wait 4 seconds (simulating reading and typing time)
-            logTestResult('User takes 4 seconds to fill out form...', 'info');
-            
-            // Reset timestamp to simulate form loaded 4 seconds ago
-            const loadTime = Date.now() - 4000;
-            document.getElementById('formLoadTime').value = loadTime;
-            
-            // Check if this would pass validation
-            const submitTime = Date.now();
-            const timeDiff = submitTime - loadTime;
-            
-            if (timeDiff >= 3000) {
-                logTestResult(`✅ Real user simulation (${timeDiff}ms) would pass validation`, 'pass');
-            } else {
-                logTestResult(`❌ Real user simulation failed time check`, 'fail');
-            }
-            
-            // Check honeypot fields (should be empty)
-            const honeypotFields = ['botCheck', 'website', 'phone'];
-            let honeypotEmpty = true;
-            
-            honeypotFields.forEach(field => {
-                const element = document.getElementById(field);
-                if (element && element.value) {
-                    honeypotEmpty = false;
-                    logTestResult(`❌ Honeypot field "${field}" is not empty`, 'fail');
-                }
-            });
-            
-            if (honeypotEmpty) {
-                logTestResult('✅ All honeypot fields are empty (as expected for real user)', 'pass');
-            }
-            
-            logTestResult('=== Real User Test Complete ===', 'info');
-            
-            // Clear the form
-            setTimeout(() => {
-                document.getElementById('subscriptionForm').reset();
-                document.getElementById('formLoadTime').value = Date.now();
-            }, 1000);
-        }
-        
-        function testBotSimulation() {
-            logTestResult('=== Simulating Bot Attack ===', 'info');
-            
-            // Simulate a bot filling the form
-            logTestResult('Bot is attacking the form...', 'info');
-            
-            // Bot fills honeypot fields (bots often fill all fields)
-            document.getElementById('botCheck').value = 'spambot';
-            document.getElementById('website').value = 'http://spam.com';
-            document.getElementById('phone').value = '1234567890';
-            
-            // Bot fills real fields quickly
-            document.getElementById('firstName').value = 'Spam';
-            document.getElementById('lastName').value = 'Bot';
-            document.getElementById('email').value = 'spam@bot.net';
-            
-            // Bot submits immediately (0.1 seconds after page load)
-            const loadTime = Date.now() - 100; // 0.1 seconds ago
-            document.getElementById('formLoadTime').value = loadTime;
-            
-            // Check if bot would be caught
-            const submitTime = Date.now();
-            const timeDiff = submitTime - loadTime;
-            const tooFast = timeDiff < 3000;
-            
-            // Check honeypot
-            const honeypotFields = ['botCheck', 'website', 'phone'];
-            let honeypotDetected = false;
-            
-            honeypotFields.forEach(field => {
-                const element = document.getElementById(field);
-                if (element && element.value) {
-                    honeypotDetected = true;
-                }
-            });
-            
-            logTestResult(`Bot submission time: ${timeDiff}ms`, 'info');
-            
-            if (tooFast) {
-                logTestResult('✅ Bot detected: Submitted too fast', 'pass');
-            } else {
-                logTestResult('❌ Time check missed the bot', 'fail');
-            }
-            
-            if (honeypotDetected) {
-                logTestResult('✅ Bot detected: Filled honeypot fields', 'pass');
-            } else {
-                logTestResult('❌ Honeypot check missed the bot', 'fail');
-            }
-            
-            if (tooFast || honeypotDetected) {
-                logTestResult('🎉 Bot attack successfully blocked!', 'pass');
-            } else {
-                logTestResult('⚠️ Bot might have slipped through', 'fail');
-            }
-            
-            logTestResult('=== Bot Simulation Complete ===', 'info');
-            
-            // Clear the form
-            setTimeout(() => {
-                document.getElementById('subscriptionForm').reset();
-                document.getElementById('formLoadTime').value = Date.now();
-            }, 1000);
-        }
+        // Simple form submission alert (for demo)
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thank you, ${email}! Welcome to the Scoop N Loop family. Check your inbox for a sweet welcome.`);
+            this.reset();
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
