@@ -354,7 +354,7 @@
         </div>
     </section>
 
-%%[
+[
 /* =====================================================
    SERVER-SIDE SSJS + AMPSCRIPT PROCESSING
    ===================================================== */
@@ -441,34 +441,9 @@ if (Request.GetFormField("submit") != null) {
         }
     }
 }
-]%%
+]
 
-    <!-- Subscription Section - FORM INTEGRATION -->
-    <section class="subscription">
-        <h2>Get the Latest News and Offers</h2>
-
-        <form class="subscription-form" method="post" id="subscribeForm">
-            <div class="form-row">
-                <input type="text" name="firstName" id="firstName" placeholder="First Name" 
-                       value="%%=v(@firstName)=%%" required maxlength="50">
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name" 
-                       value="%%=v(@lastName)=%%" required maxlength="50">
-            </div>
-            <input type="email" name="email" id="email" placeholder="Email" 
-                   value="%%=v(@email)=%%" required>
-            %%[ if @errorMsg != "" or @successMsg != "" then ]%%
-            <input type="submit" name="submit" id="submitBtn" value="Subscribe Again">
-            %%[ else ]%%
-            <button type="submit" name="submit" id="submitBtn">Subscribe</button>
-            %%[ endif ]%%
-
-            %%[ IF @successMsg != "" THEN ]%%
-                <div id="messageBox" class="success">%%=v(@successMsg)=%%</div>
-            %%[ ELSEIF @errorMsg != "" THEN ]%%
-                <div id="messageBox" class="error">%%=v(@errorMsg)=%%</div>
-            %%[ ENDIF ]%%
-        </form>
-    </section>
+    
 
     <!-- Footer -->
     <footer>
