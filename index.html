@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Americana at Brand</title>
-
     <style>
         * {
             margin: 0;
@@ -105,7 +101,7 @@
 
         /* Hero Section */
         .hero {
-            background: white;
+            white, url('https://via.placeholder.com/1920x600/8B7355/ffffff?text=Welcome+to+The+Americana') center/cover;
             color: black;
             text-align: center;
             padding: 20px 20px;
@@ -179,6 +175,28 @@
             background-color: #6d5a43;
         }
 
+        /* Welcome Section */
+        .welcome {
+            padding: 80px 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .welcome h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #333;
+        }
+
+        .welcome p {
+            font-size: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.8;
+        }
+
         /* Subscription Section */
         .subscription {
             background-color: #8B7355;
@@ -214,13 +232,20 @@
             border-radius: 3px;
         }
 
+        .subscription-form input:focus {
+            outline: 2px solid #6d5a43;
+        }
+
         .subscription-form button {
             padding: 15px 40px;
             background-color: #000;
             color: #fff;
             border: none;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
+            transition: background-color 0.3s;
             border-radius: 3px;
         }
 
@@ -228,32 +253,67 @@
             background-color: #333;
         }
 
-        /* Message Box */
-        #messageBox {
-            margin-top: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 3px;
-        }
-
-        #messageBox.success {
-            background-color: rgba(0, 255, 0, 0.1);
-            color: #00aa00;
-            border: 1px solid lightgreen;
-        }
-
-        #messageBox.error {
-            background-color: rgba(255, 255, 0, 0.2);
-            color: #ccaa00;
-            border: 1px solid yellow;
-        }
-
         /* Footer */
         footer {
             background-color: #1a1a1a;
             color: #fff;
             padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #8B7355;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #8B7355;
         }
 
         .footer-bottom {
@@ -266,6 +326,24 @@
             color: #999;
             font-size: 13px;
             margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
         }
 
         /* Responsive */
@@ -282,11 +360,13 @@
             .form-row {
                 flex-direction: column;
             }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-</head>
 
-<body>
 
     <!-- Top Bar -->
     <div class="top-bar">
@@ -297,8 +377,7 @@
     <!-- Header -->
     <header>
         <div class="logo-container">
-            <img src="https://americanaatbrand.com/wp-content/uploads/2021/11/Americana-Logo-Vector.svg"
-                alt="The Americana at Brand" id="logo">
+            <img src="https://americanaatbrand.com/wp-content/uploads/2021/11/Americana-Logo-Vector.svg" alt="The Americana at Brand" id="logo">
             <h1 style="display: none;">The Americana at Brand</h1>
         </div>
 
@@ -327,8 +406,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Welcome to The Americana at Brand</h1>
-        <p>The Americana at Brand in Glendale, California, is a one-of-a-kind destination that offers a remarkable blend
-            of shopping, restaurants, activities, movies, and entertainment.</p>
+        <p>The Americana at Brand in Glendale, California, is a one-of-a-kind destination that offers a remarkable blend of shopping, restaurants, activities, movies, and entertainment. Located just a short drive away from Downtown Los Angeles and Hollywood, The Americana at Brand enjoys a unique and advantageous location.</p>
     </section>
 
     <!-- Featured Sections -->
@@ -336,121 +414,150 @@
         <div class="featured-grid">
             <div class="featured-card">
                 <h3>Enjoy Dine LA</h3>
-                <p>Make reservations at Bacari GDL, Seabutter and more.</p>
+                <p>Make reservations at Bacari GDL, Seabutter and more to enjoy specially priced prix-fixe menus for lunch and dinner.</p>
                 <a href="#" class="btn">Learn More</a>
             </div>
 
             <div class="featured-card">
                 <h3>Michelina Bakery</h3>
-                <p>Say bonjour to the bakery where artisanal breads and homemade desserts come to life.</p>
+                <p>Say bonjour to the bakery where artisanal breads and homemade desserts come to life in a Parisian-inspired patisserie.</p>
                 <a href="#" class="btn">Learn More</a>
             </div>
 
             <div class="featured-card">
                 <h3>Kids Club</h3>
-                <p>Join us for a weekly dose of fun with live music, puppet shows, magic and more.</p>
+                <p>Join us for a weekly dose of fun with live music, puppet shows, magic and more at Kids Club in Collaboration with Apple TV.</p>
                 <a href="#" class="btn">Learn More</a>
             </div>
         </div>
     </section>
 
-[
-/* =====================================================
-   SERVER-SIDE SSJS + AMPSCRIPT PROCESSING
-   ===================================================== */
-platform.load("core", "1");
+    <!-- Welcome Text Section -->
+    <section class="welcome">
+        <h2>Discover The Americana at Brand</h2>
+        <p>Situated in close proximity to iconic destinations, The Americana at Brand serves as a convenient center for both locals and tourists alike. Experience world-class shopping, exceptional dining, and unforgettable entertainment in the heart of Glendale.</p>
+    </section>
 
-var @successMsg, @errorMsg, @accountId, @firstName, @lastName, @email;
-@successMsg = "";
-@errorMsg = "";
-@accountId = "";
+    <!-- More Features -->
+    <section class="featured">
+        <div class="featured-grid">
+            <div class="featured-card">
+                <h3>Caruso Signature</h3>
+                <p>A premier membership to the world of Caruso. Enhanced events, early access and exclusive rewards await you.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
 
-/* Preserve form values for sticky fields */
-@firstName = Request.GetFormField("firstName");
-@lastName = Request.GetFormField("lastName");
-@email = Request.GetFormField("email");
+            <div class="featured-card">
+                <h3>Movies</h3>
+                <p>Head to the big screen for an unforgettable moviegoing experience by AMC Theatres. Enjoy the latest in must-see films alongside AMC Perfectly Popcorn™.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
 
-/* Process form submission ONLY on POST */
-if (Request.GetFormField("submit") != null) {
-    var firstName = Trim(Request.GetFormField("firstName"));
-    var lastName = Trim(Request.GetFormField("lastName"));
-    var email = Trim(Request.GetFormField("email"));
-    
-    /* Client-side + server-side validation */
-    if (!firstName || !lastName || !email || !/^[^@\s]+@[^@]+\.[^@]+$/.test(email)) {
-        @errorMsg = "First Name, Last Name, and valid Email are required.";
-    } else {
-        /* Sales Cloud Configuration - MATCHES YOUR POSTMAN */
-        var sfInstance = "https://carusomanagementcompany--carusodev.sandbox.my.salesforce.com";
-        var sfTokenUrl = sfInstance + "/services/oauth2/token";
-        var sfApiUrl = sfInstance + "/services/apexrest/createPersonAccount/";
-        
-        /* Connected App Credentials - FROM YOUR POSTMAN TESTS */
-        var clientId = "3MVG9mfwxqFiSd5Qzx3QlXKYkzRuFRs6eXTrIiYkFG1Rtb0o.fWuDF.hFaPDPekdjov59qUhE.6qpyppJ6SqS";
-        var clientSecret = "514108D895438A817AECCF003C7083DBA3668699D9D449B1686C1CFB58E1B073";
-        var username = "vinil.reddy@kasmodigital.com.carusodev";
-        var password = "Parupati@12345"; /* Add 5-char security token if required */
-        
-        /* STEP 1: Generate OAuth Token (EXACTLY like Postman) */
-        var tokenPayload = "grant_type=password" +
-                          "&client_id=" + clientId + 
-                          "&client_secret=" + clientSecret + 
-                          "&username=" + EncodeURIComponent(username) + 
-                          "&password=" + EncodeURIComponent(password);
-        
-        var tokenHeaders = ["Content-Type"];
-        var tokenHeaderNames = ["Content-Type"];
-        var tokenHeaderValues = ["application/x-www-form-urlencoded"];
-        
-        var tokenResult = HTTP.Post(sfTokenUrl, tokenHeaderNames, tokenPayload, tokenHeaderValues);
-        
-        if (tokenResult.StatusCode == 200) {
-            var tokenResponse = Platform.Function.ParseJSON(tokenResult.Response[0]);
-            var accessToken = tokenResponse.access_token;
-            
-            /* STEP 2: Create Person Account (EXACTLY like Postman) */
-            var apiPayload = Platform.Function.Stringify({
-                "firstName": firstName,
-                "lastName": lastName,
-                "email": email
-            });
-            
-            var apiHeaders = ["Authorization", "Content-Type"];
-            var apiHeaderNames = ["Authorization", "Content-Type"];
-            var apiHeaderValues = ["Bearer " + accessToken, "application/json"];
-            
-            var apiResult = HTTP.Post(sfApiUrl, apiHeaderNames, apiPayload, apiHeaderValues);
-            
-            if (apiResult.StatusCode == 200) {
-                var apiResponse = Platform.Function.ParseJSON(apiResult.Response[0]);
-                if (apiResponse.success == true) {
-                    @successMsg = "Thank you! Your subscription is successful.&br;Person Account ID: " + apiResponse.accountId;
-                    @accountId = apiResponse.accountId;
-                    /* Clear form on success */
-                    @firstName = "";
-                    @lastName = "";
-                    @email = "";
-                } else {
-                    @errorMsg = apiResponse.message || "Account creation failed.";
-                }
-            } else {
-                @errorMsg = "API Error (" + apiResult.StatusCode + "): " + apiResult.Response[0];
-            }
-        } else {
-            @errorMsg = "Authentication failed (" + tokenResult.StatusCode + "): " + tokenResult.Response[0];
-        }
-    }
-}
-]
+            <div class="featured-card">
+                <h3>Piano Bar</h3>
+                <p>Experience live entertainment at Bourbon Steak Los Angeles with Piano Bar performances every evening from 7pm-10pm.</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
 
-    
+    <!-- Subscription Section -->
+    <section class="subscription">
+        <h2>Get the Latest News and Offers</h2>
+        <form class="subscription-form" id="subscriptionForm">
+            <div class="form-row">
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required="">
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required="">
+            </div>
+            <input type="email" id="email" name="email" placeholder="Email" required="">
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
 
     <!-- Footer -->
     <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Americana at Brand</h3>
+                <p>889 Americana Way<br>Glendale, CA 91210</p>
+                <p>818.637.8982</p>
+                <p><a href="#contact">Contact Us</a></p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Opportunity</h3>
+                <ul>
+                    <li><a href="#partnerships">Brand Partnerships</a></li>
+                    <li><a href="#leasing">Specialty Retail Leasing</a></li>
+                    <li><a href="#filming">Filming</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#shopping">Shopping</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#services">Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Visit</h3>
+                <ul>
+                    <li><a href="#directory">Directory</a></li>
+                    <li><a href="#parking">Parking</a></li>
+                    <li><a href="#hours">Visit Us</a></li>
+                    <li><a href="#highlights">Highlights</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             <p>© 2026 Caruso | All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#faq">FAQ</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#accessibility">Accessibility Certification</a>
+                <a href="#sitemap">HTML Sitemap</a>
+            </div>
         </div>
     </footer>
 
-</body>
-</html>
+    <script>
+        // Form submission handler placeholder
+        document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+
+            console.log('Form submitted:', { firstName, lastName, email });
+
+            // You can add your subscription logic here
+            alert('Thank you for subscribing! (Add your logic here)');
+
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
